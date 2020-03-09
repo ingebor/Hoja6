@@ -16,7 +16,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -78,14 +77,18 @@ public class Main {
          * segun los parametros escogidos por el usuario.
 		 */
 		MapFactory<String, String> mapFactory = new MapFactory<String, String>();
-		Map<String, String> map = mapFactory.getStack(mapType);
+		Map<String, String> map = mapFactory.getMap(mapType);
 		/**
 		 * Comienza la lectura de los elementos del archivo en la lista para ingresarlos al Map.
 		 */
-        
 
 
 
+			// TODO: Meter lo de la lista en el Map
+
+
+
+			
 		/**
 		 * Teniendo todas las cartas guardadas en el Map, se muestra al usuario
          * el menu de opciones que puede realizar
