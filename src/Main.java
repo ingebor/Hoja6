@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
+import java.util.Map;
 public class Main {
 
 	/**
@@ -62,9 +62,10 @@ public class Main {
 	static int countTram = 0;
 	static int countHech = 0;
 
+	@SuppressWarnings("unchecked")
 	public static void main(final String[] args) throws Exception {
 		/**
-		 * Menú de elección de tipo de Map a utilizar.
+		 * Menu de eleccion de tipo de Map a utilizar.
 		 */
         System.out.println("Eliga el tipo de Map que quiere utlizar:");
         System.out.println("1. HashMap\n2. TreeMap\n3. LinkedHashMap");
@@ -80,16 +81,20 @@ public class Main {
 		 * MapFactory y llamando al metodo que devuelve una Map<K, V>,
          * segun los parametros escogidos por el usuario.
 		 */
+		
 		MapFactory<String, String> mapFactory = new MapFactory<String, String>();
 		Map<String, String> map = mapFactory.getMap(mapType);
 		Map<String, String> userMap = mapFactory.getMap(mapType);
+		
 		/**
 		 * Comienza la lectura de los elementos del archivo en la lista para ingresarlos al Map.
 		 */
 		String[] keyAndValue = new String[2];
 		for (String cardInList : list) {
 			keyAndValue = cardInList.split("|");
+			System.out.println("tamanio del array"+keyAndValue.length);
 			map.put(keyAndValue[0], keyAndValue[1]);
+			System.out.println("funciona?");
 		}
 		/**
 		 * Teniendo todas las cartas guardadas en el Map, se muestra al usuario
@@ -97,11 +102,11 @@ public class Main {
 		 */
         int userOption = 0;
         while(userOption != 7) {
-            System.out.println("------CAAAAAARTAAAAAAAAAAAAAASSSSSSSS--------");
-            System.out.println("1. Agregar una carta a la colección. Debe ingresar el nombre de la carta que desea agregar.");
-            System.out.println("2. Mostrar el tipo de una carta específica. Debe ingresar el nombre de la carta");
-            System.out.println("3. Mostrar el nombre, tipo y cantidad de cada carta en su colección.");
-            System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta en su colección, ordenadas por tipo.");
+            System.out.println("------Bienvenido--------\n Debe esoger la opcion que desee utilizar: ");
+            System.out.println("1. Agregar una carta a la coleccion. Debe ingresar el nombre de la carta que desea agregar.");
+            System.out.println("2. Mostrar el tipo de una carta especifica. Debe ingresar el nombre de la carta");
+            System.out.println("3. Mostrar el nombre, tipo y cantidad de cada carta en su coleccion.");
+            System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta en su coleccion, ordenadas por tipo.");
             System.out.println("5. Mostrar el nombre y tipo de todas las cartas existentes.");
             System.out.println("6. Mostrar el nombre y tipo de todas las cartas existentes, ordenadas por tipo.");
             userOption = scan.nextInt();
@@ -113,7 +118,7 @@ public class Main {
 			String value = "";
 			
             try {
-            	TreeMap<String, String> sorted = new TreeMap<>();
+            	//TreeMap<String, String> sorted = new TreeMap<>();
                 switch (userOption) {
 					case 1:
 						System.out.println("Ingrese el nombre de la carta:");
@@ -155,7 +160,12 @@ public class Main {
                     	countMon = 0;
                     	countTram = 0;
                     	countHech = 0;
-                    	sorted.putAll(userMap);
+                    	
+                    	//Map<String, String> unsorted = map;
+                    	Map<String,String> sorted = new TreeMap<String, String>();
+                    	System.out.println(sorted);
+                    	//sorted.putAll(userMap);
+                    	
                     	/*if (mapType == 3) {
                     		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
                     		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
@@ -182,15 +192,15 @@ public class Main {
 						});
                     break;
                     case 6:
-                    	sorted.putAll(userMap);
+                    	//sorted.putAll(userMap);
                     	/*if (mapType == 3) {
                     		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
                     		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                     		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
                     	}*/   
-                    	sorted.forEach((k, v) -> {
-							System.out.println(k + " - " + v);
-						});
+                    	//sorted.forEach((k, v) -> {
+						/*	System.out.println(k + " - " + v);
+						});*/
                     break;
                     default:
                         System.out.println("Eliga una opcion valida!");

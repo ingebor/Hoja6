@@ -1,4 +1,5 @@
-class MapFactory<K, V> {
+import java.util.Map;
+public class MapFactory<K, V> {
     public Map<K, V> getMap(int mapType) {
         switch (mapType) {
             case 1:
@@ -8,7 +9,7 @@ class MapFactory<K, V> {
             case 3:
                 return new LinkedHashMap<K,V>();
             default:
-                return null;
+                return new HashMap<K,V>();
         }
     }
 }
