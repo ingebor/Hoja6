@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -57,6 +58,9 @@ public class Main {
 		br.close();
 		return lineList;
 	}
+	static int countMon = 0;
+	static int countTram = 0;
+	static int countHech = 0;
 
 	public static void main(final String[] args) throws Exception {
 		/**
@@ -107,7 +111,9 @@ public class Main {
              */
 			String key = "";
 			String value = "";
+			
             try {
+            	TreeMap<String, String> sorted = new TreeMap<>();
                 switch (userOption) {
 					case 1:
 						System.out.println("Ingrese el nombre de la carta:");
@@ -130,16 +136,13 @@ public class Main {
 						}
                     break;
 					case 3:
-						int countMon = 0;
-						int countTram = 0;
-						int countHech = 0;
 						userMap.forEach((k, v) -> {
-							if (v = "Monstruo") {
+							if (v == "Monstruo") {
 								countMon++;
-							} else if (v = "Trampa") {
+							} else if (v == "Trampa") {
 								countTram++;
 
-							} else if (v = "Hechizo") {
+							} else if (v == "Hechizo") {
 								countHech++;
 							}
 							System.out.println(k + " - " + v);
@@ -149,16 +152,48 @@ public class Main {
 						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
                     break;
                     case 4:
-                        System.out.println("Pendiente opcion 4");
+                    	countMon = 0;
+                    	countTram = 0;
+                    	countHech = 0;
+                    	sorted.putAll(userMap);
+                    	/*if (mapType == 3) {
+                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
+                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
+                    	}*/
+                    	sorted.forEach((k, v) -> {
+							if (v == "Monstruo") {
+								countMon++;
+							} else if (v == "Trampa") {
+								countTram++;
+
+							} else if (v == "Hechizo") {
+								countHech++;
+							}
+							System.out.println(k + " - " + v);
+						});
+						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
+						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
+						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
                     break;
                     case 5:
-                        System.out.println("Pendiente opcion 5");
+                    	map.forEach((k, v) -> {
+							System.out.println(k + " - " + v);
+						});
                     break;
                     case 6:
-                        System.out.println("Pendiente opcion 6");
+                    	sorted.putAll(userMap);
+                    	/*if (mapType == 3) {
+                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
+                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
+                    	}*/   
+                    	sorted.forEach((k, v) -> {
+							System.out.println(k + " - " + v);
+						});
                     break;
                     default:
-                        System.out.println("Eliga una opción válida!");
+                        System.out.println("Eliga una opcion valida!");
                     break;
                 }
             } catch (Exception e) {
