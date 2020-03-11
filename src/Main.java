@@ -81,14 +81,11 @@ public class Main {
 		/**
 		 * Comienza la lectura de los elementos del archivo en la lista para ingresarlos al Map.
 		 */
-
-
-
-			// TODO: Meter lo de la lista en el Map
-
-
-
-			
+		String[] keyAndValue = new String[2];
+		for (String cardInList : list) {
+			keyAndValue = cardInList.split("|");
+			map.put(keyAndValue[0], keyAndValue[1]);
+		}
 		/**
 		 * Teniendo todas las cartas guardadas en el Map, se muestra al usuario
          * el menu de opciones que puede realizar
