@@ -78,6 +78,7 @@ public class Main {
 		 */
 		MapFactory<String, String> mapFactory = new MapFactory<String, String>();
 		Map<String, String> map = mapFactory.getMap(mapType);
+		Map<String, String> userMap = mapFactory.getMap(mapType);
 		/**
 		 * Comienza la lectura de los elementos del archivo en la lista para ingresarlos al Map.
 		 */
@@ -104,16 +105,48 @@ public class Main {
             /**
              * Se realizan las opciones segun la eleccion del usuario.
              */
+			String key = "";
+			String value = "";
             try {
                 switch (userOption) {
-                    case 1:
-                        System.out.println("Pendiente opcion 1");
+					case 1:
+						System.out.println("Ingrese el nombre de la carta:");
+						key = scan.nextLine();
+						if (map.containsKey(key)) {
+							value = map.get(key);
+							System.out.println("Se ha ingresado la carta " + userMap.put(key, value));
+						} else {
+							System.out.println("Esta carta no existe!");
+						}
                     break;
-                    case 2:
-                        System.out.println("Pendiente opcion 2");
+					case 2:
+						System.out.println("Ingrese el nombre de la carta:");
+						key = scan.nextLine();
+						if (map.containsKey(key)) {
+							value = map.get(key);
+							System.out.println("Esta carta es de tipo " + value);
+						} else {
+							System.out.println("Esta carta no existe!");
+						}
                     break;
-                    case 3:
-                        System.out.println("Pendiente opcion 3");
+					case 3:
+						int countMon = 0;
+						int countTram = 0;
+						int countHech = 0;
+						userMap.forEach((k, v) -> {
+							if (v = "Monstruo") {
+								countMon++;
+							} else if (v = "Trampa") {
+								countTram++;
+
+							} else if (v = "Hechizo") {
+								countHech++;
+							}
+							System.out.println(k + " - " + v);
+						});
+						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
+						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
+						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
                     break;
                     case 4:
                         System.out.println("Pendiente opcion 4");
