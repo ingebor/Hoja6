@@ -20,6 +20,11 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.LinkedHashMap;
+
+import static java.util.stream.Collectors.*;
+import static java.util.Map.Entry.*;
+
 public class Main {
 
 	/**
@@ -120,9 +125,8 @@ public class Main {
 			 */
 			String key = "";
 			String value = "";
-			
+			Map<String, String> sorted = new LinkedHashMap<String, String>();
 			try {
-				//TreeMap<String, String> sorted = new TreeMap<>();
 				switch (userOption) {
 					case 1:
 						System.out.println("Ingrese el nombre de la carta:");
@@ -146,6 +150,9 @@ public class Main {
 						}
 					break;
 					case 3:
+						countMon = 0;
+						countTram = 0;
+						countHech = 0;
 						userMap.forEach((k, v) -> {
 							if (v.equals("Monstruo")) {
 								countMon++;
@@ -165,17 +172,11 @@ public class Main {
 						countMon = 0;
 						countTram = 0;
 						countHech = 0;
-						
-						//Map<String, String> unsorted = map;
-						Map<String,String> sorted = new TreeMap<String, String>();
-						System.out.println(sorted);
-						//sorted.putAll(userMap);
-						
-						/*if (mapType == 3) {
-							userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
-							.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-							(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-						}*/
+						sorted = userMap
+						.entrySet()
+						.stream().sorted(Map.Entry.comparingByValue())
+						.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
+						LinkedHashMap::new));
 						sorted.forEach((k, v) -> {
 							if (v == "Monstruo") {
 								countMon++;
@@ -197,15 +198,15 @@ public class Main {
 						});
 					break;
 					case 6:
-						//sorted.putAll(userMap);
-						/*if (mapType == 3) {
-							userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
-							.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-							(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-						}*/   
-						//sorted.forEach((k, v) -> {
-						/*	System.out.println(k + " - " + v);
-						});*/
+						sorted = map
+						.entrySet()
+						.stream().sorted(Map.Entry.comparingByValue())
+						.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
+						LinkedHashMap::new));
+						
+						sorted.forEach((k, v) -> {
+							System.out.println(k + " - " + v);
+						});
 					break;
 					default:
 						System.out.println("Eliga una opcion valida!");
