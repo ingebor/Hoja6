@@ -34,6 +34,7 @@ public class Main {
 	 * @throws Exception excepción general para la lectura del archivo
 	 */
 	public static String[] textReader() throws Exception{
+		Scanner scan = new Scanner(System.in);
 		final String bar = File.separator;
 		final String dir = System.getProperty("user.dir");
 		/**
@@ -44,7 +45,13 @@ public class Main {
 		 * y no en consola
 		 * o tambien sucede al trabajar con paquetes
 		 */
-		final File file = new File(dir + bar + "cards_desc.txt");
+		System.out.println("Escribe el nombre del archivo de texto a utilizar");
+		System.out.println("O presiona enter para utilizar el predeterminado (cards_desc.txt)");
+		String filetxt = scan.nextLine();
+		if (filetxt.equals("")) {
+			filetxt = "cards_desc.txt";
+		}
+		final File file = new File(dir + bar + filetxt);
 		if (!file.exists()) {
 			throw new FileNotFoundException("No se encontro el archivo, ver lineas comentadas");
 		}
@@ -71,12 +78,18 @@ public class Main {
 		/**
 		 * Menu de eleccion de tipo de Map a utilizar.
 		 */
-        System.out.println("Eliga el tipo de Map que quiere utlizar:");
-        System.out.println("1. HashMap\n2. TreeMap\n3. LinkedHashMap");
-        Scanner scan = new Scanner(System.in);
-        int mapType = scan.nextInt();
-        scan.nextLine();
-        System.out.println("En caso de haber escogido una opcion que no se encuentra en el menu, se utilizara HashMap como predeterminado");
+		Scanner scan = new Scanner(System.in);
+		boolean hasAType = false;
+		int mapType = 0;
+		while(!hasAType) {
+			System.out.println("Eliga el tipo de Map que quiere utlizar:");
+			System.out.println("1. HashMap\n2. TreeMap\n3. LinkedHashMap");
+			mapType = scan.nextInt();
+			scan.nextLine();
+			if (mapType > 0 && mapType < 4) {
+				hasAType = true;
+			}
+		}
 		/**
 		 * Se lee el archivo de texto
 		 */
