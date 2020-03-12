@@ -49,7 +49,7 @@ public class Main {
 		FileReader fr;
 		fr = new FileReader(file);
 		final BufferedReader br = new BufferedReader(fr);
-		String[] lineList = new String[8862];
+		String[] lineList = new String[8861];
 		String line = "";
 		int cont = 0;
 		while ((line = br.readLine()) != null) {
@@ -93,7 +93,10 @@ public class Main {
 		 */
 		String[] keyAndValue = new String[2];
 		for (String cardInList : list) {
-			keyAndValue = cardInList.split("\\|"); 
+			keyAndValue[0] = cardInList.split("\\|")[0];
+			keyAndValue[1] = cardInList.split("\\|")[1];
+			System.out.println("en 0: " + keyAndValue[0]);
+			System.out.println("en 1: " + keyAndValue[1]);
 			map.put(keyAndValue[0], keyAndValue[1]);
 		}
 		/**
