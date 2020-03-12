@@ -80,6 +80,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int mapType = scan.nextInt();
         scan.nextLine();
+        System.out.println("En caso de haber escogido una opcion que no se encuentra en el menu, se utilizara HashMap como predeterminado");
 		/**
 		 * Se lee el archivo de texto
 		 */
@@ -117,7 +118,6 @@ public class Main {
             System.out.println("5. Mostrar el nombre y tipo de todas las cartas existentes.");
             System.out.println("6. Mostrar el nombre y tipo de todas las cartas existentes, ordenadas por tipo.");
 			System.out.println("7. Salir");
-			
 			userOption = scan.nextInt();
 			scan.nextLine();
 			/**
@@ -211,12 +211,17 @@ public class Main {
 					default:
 						System.out.println("Eliga una opcion valida!");
 					break;
+					}
+				} 
+				catch (Exception e) {
+					System.out.println(e);
+					System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
 				}
-			} catch (Exception e) {
-				System.out.println(e);
-				System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
-			}
-		}
-		scan.close();
+        	}
+			scan.close();
+				
+				
+			
+				
+        }
 	}
-}
