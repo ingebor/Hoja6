@@ -1,9 +1,10 @@
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashMap;
 
-class HashMap<K, V> implements Map{
-
+class hashMap<K, V> implements Map{
+	HashMap<String,String > hashMap = new HashMap<String,String>();
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
@@ -13,7 +14,7 @@ class HashMap<K, V> implements Map{
 	@Override
 	public boolean containsKey(Object arg0) {
 		// TODO Auto-generated method stub
-		return false;
+		return hashMap.containsKey(arg0);
 	}
 
 	@Override

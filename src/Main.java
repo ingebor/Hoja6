@@ -95,8 +95,6 @@ public class Main {
 		for (String cardInList : list) {
 			keyAndValue[0] = cardInList.split("\\|")[0];
 			keyAndValue[1] = cardInList.split("\\|")[1];
-			System.out.println("en 0: " + keyAndValue[0]);
-			System.out.println("en 1: " + keyAndValue[1]);
 			map.put(keyAndValue[0], keyAndValue[1]);
 		}
 		/**
@@ -112,107 +110,118 @@ public class Main {
             System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta en su coleccion, ordenadas por tipo.");
             System.out.println("5. Mostrar el nombre y tipo de todas las cartas existentes.");
             System.out.println("6. Mostrar el nombre y tipo de todas las cartas existentes, ordenadas por tipo.");
-            userOption = scan.nextInt();
-            scan.nextLine();
-            /**
-             * Se realizan las opciones segun la eleccion del usuario.
-             */
-			String key = "";
-			String value = "";
-			
+            System.out.println("7. Salir");
             try {
-            	//TreeMap<String, String> sorted = new TreeMap<>();
-                switch (userOption) {
-					case 1:
-						System.out.println("Ingrese el nombre de la carta:");
-						key = scan.nextLine();
-						if (map.containsKey(key)) {
-							value = map.get(key);
-							System.out.println("Se ha ingresado la carta " + userMap.put(key, value));
-						} else {
-							System.out.println("Esta carta no existe!");
-						}
-                    break;
-					case 2:
-						System.out.println("Ingrese el nombre de la carta:");
-						key = scan.nextLine();
-						if (map.containsKey(key)) {
-							value = map.get(key);
-							System.out.println("Esta carta es de tipo " + value);
-						} else {
-							System.out.println("Esta carta no existe!");
-						}
-                    break;
-					case 3:
-						userMap.forEach((k, v) -> {
-							if (v == "Monstruo") {
-								countMon++;
-							} else if (v == "Trampa") {
-								countTram++;
-
-							} else if (v == "Hechizo") {
-								countHech++;
+            	int menuOption = scan.nextInt();
+            	menuOption = userOption;
+            
+	            userOption = scan.nextInt();
+	            scan.nextLine();
+	            /**
+	             * Se realizan las opciones segun la eleccion del usuario.
+	             */
+				String key = "";
+				String value = "";
+				
+	            try {
+	            	//TreeMap<String, String> sorted = new TreeMap<>();
+	                switch (userOption) {
+						case 1:
+							System.out.println("Ingrese el nombre de la carta:");
+							key = scan.nextLine();
+							if (map.containsKey(key)) {
+								value = map.get(key);
+								System.out.println("Se ha ingresado la carta " + userMap.put(key, value));
+							} else {
+								System.out.println("Esta carta no existe!");
 							}
-							System.out.println(k + " - " + v);
-						});
-						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
-						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
-						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
-                    break;
-                    case 4:
-                    	countMon = 0;
-                    	countTram = 0;
-                    	countHech = 0;
-                    	
-                    	//Map<String, String> unsorted = map;
-                    	Map<String,String> sorted = new TreeMap<String, String>();
-                    	System.out.println(sorted);
-                    	//sorted.putAll(userMap);
-                    	
-                    	/*if (mapType == 3) {
-                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-                    	}*/
-                    	sorted.forEach((k, v) -> {
-							if (v == "Monstruo") {
-								countMon++;
-							} else if (v == "Trampa") {
-								countTram++;
-
-							} else if (v == "Hechizo") {
-								countHech++;
+	                    break;
+						case 2:
+							System.out.println("Ingrese el nombre de la carta:");
+							key = scan.nextLine();
+							if (map.containsKey(key)) {
+								value = map.get(key);
+								System.out.println("Esta carta es de tipo " + value);
+							} else {
+								System.out.println("Esta carta no existe!");
 							}
-							System.out.println(k + " - " + v);
-						});
-						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
-						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
-						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
-                    break;
-                    case 5:
-                    	map.forEach((k, v) -> {
-							System.out.println(k + " - " + v);
-						});
-                    break;
-                    case 6:
-                    	//sorted.putAll(userMap);
-                    	/*if (mapType == 3) {
-                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-                    	}*/   
-                    	//sorted.forEach((k, v) -> {
-						/*	System.out.println(k + " - " + v);
-						});*/
-                    break;
-                    default:
-                        System.out.println("Eliga una opcion valida!");
-                    break;
-                }
-            } catch (Exception e) {
-                System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
-            }
+	                    break;
+						case 3:
+							userMap.forEach((k, v) -> {
+								if (v == "Monstruo") {
+									countMon++;
+								} else if (v == "Trampa") {
+									countTram++;
+	
+								} else if (v == "Hechizo") {
+									countHech++;
+								}
+								System.out.println(k + " - " + v);
+							});
+							System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
+							System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
+							System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
+	                    break;
+	                    case 4:
+	                    	countMon = 0;
+	                    	countTram = 0;
+	                    	countHech = 0;
+	                    	
+	                    	//Map<String, String> unsorted = map;
+	                    	Map<String,String> sorted = new TreeMap<String, String>();
+	                    	System.out.println(sorted);
+	                    	//sorted.putAll(userMap);
+	                    	
+	                    	/*if (mapType == 3) {
+	                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
+	                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+	                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
+	                    	}*/
+	                    	sorted.forEach((k, v) -> {
+								if (v == "Monstruo") {
+									countMon++;
+								} else if (v == "Trampa") {
+									countTram++;
+	
+								} else if (v == "Hechizo") {
+									countHech++;
+								}
+								System.out.println(k + " - " + v);
+							});
+							System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
+							System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
+							System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
+	                    break;
+	                    case 5:
+	                    	map.forEach((k, v) -> {
+								System.out.println(k + " - " + v);
+							});
+	                    break;
+	                    case 6:
+	                    	//sorted.putAll(userMap);
+	                    	/*if (mapType == 3) {
+	                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
+	                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+	                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
+	                    	}*/   
+	                    	//sorted.forEach((k, v) -> {
+							/*	System.out.println(k + " - " + v);
+							});*/
+	                    break;
+	                    default:
+	                        System.out.println("Eliga una opcion valida!");
+	                    break;
+	                }
+	            } catch (Exception e) {
+	                System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
+	            }
+	        
+			scan.close();
         }
-		scan.close();
+        catch (Exception e) {
+        	System.out.println("Ingrese un valor correcto por favor");
+        	userOption = 7;
+        }
+	}	
 	}
 }

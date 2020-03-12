@@ -1,5 +1,5 @@
 import java.util.Map;
-public class MapFactory<K, V> {
+class MapFactory<K, V> {
     public Map<K, V> getMap(int mapType) {
         switch (mapType) {
             case 1:
