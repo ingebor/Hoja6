@@ -121,7 +121,7 @@ public class Main {
 			 */
 			String key = "";
 			String value = "";
-			Map<String, String> sorted = new MyLinkedHashMap<String, String>();
+			java.util.Map<String, String> sorted = new LinkedHashMap<String, String>();
 			try {
 				switch (userOption) {
 					case 1:
@@ -168,7 +168,7 @@ public class Main {
 						countMon = 0;
 						countTram = 0;
 						countHech = 0;
-						sorted = (Map<String, String>) userMap.entrySet().stream().sorted(java.util.Map.Entry.comparingByValue())
+						sorted = userMap.entrySet().stream().sorted(java.util.Map.Entry.comparingByValue())
 								.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 						sorted.forEach((k, v) -> {
 							if (v.equals("Monstruo")) {
@@ -191,7 +191,7 @@ public class Main {
 						});
 					break;
 					case 6:
-						sorted = (Map<String, String>) map.entrySet().stream().sorted(java.util.Map.Entry.comparingByValue())
+						sorted = map.entrySet().stream().sorted(java.util.Map.Entry.comparingByValue())
 								.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 						
 						sorted.forEach((k, v) -> {

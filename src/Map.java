@@ -17,12 +17,4 @@ interface Map<K, V> {
     
     Set<java.util.Map.Entry<K,V>> entrySet();
     
-    interface Entry<K, V>{
-    	K getKey();
-    	V getValue();
-    	public static <K, V extends Comparable<? super V>> Comparator<Map.Entry<K, V>> comparingByValue() {
-            return (Comparator<Map.Entry<K, V>> & Serializable)
-                (c1, c2) -> c1.getValue().compareTo(c2.getValue());
-        }
-    }
 }
