@@ -1,19 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.LinkedHashMap;
-
 class MapFactory<K, V> {
     public Map<K, V> getMap(int mapType) {
         switch (mapType) {
             case 1:
-                return new HashMap<K,V>();
+                return new MyHashMap<K,V>();
             case 2:
-                return new TreeMap<K,V>();
+                return new MyTreeMap<K,V>();
             case 3:
-                return new LinkedHashMap<K,V>();
+                return new MyLinkedHashMap<K,V>();
             default:
-                return new HashMap<K,V>();
+                return null;
         }
     }
 }

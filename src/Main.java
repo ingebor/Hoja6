@@ -17,13 +17,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.LinkedHashMap;
 
 import static java.util.stream.Collectors.*;
-import static java.util.Map.Entry.*;
 
 public class Main {
 
@@ -125,7 +121,7 @@ public class Main {
 			 */
 			String key = "";
 			String value = "";
-			Map<String, String> sorted = new LinkedHashMap<String, String>();
+			java.util.Map<String, String> sorted = new LinkedHashMap<String, String>();
 			try {
 				switch (userOption) {
 					case 1:
@@ -172,11 +168,8 @@ public class Main {
 						countMon = 0;
 						countTram = 0;
 						countHech = 0;
-						sorted = userMap
-						.entrySet()
-						.stream().sorted(Map.Entry.comparingByValue())
-						.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
-						LinkedHashMap::new));
+						sorted = userMap.entrySet().stream().sorted(java.util.Map.Entry.comparingByValue())
+								.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 						sorted.forEach((k, v) -> {
 							if (v.equals("Monstruo")) {
 								countMon++;
@@ -198,11 +191,8 @@ public class Main {
 						});
 					break;
 					case 6:
-						sorted = map
-						.entrySet()
-						.stream().sorted(Map.Entry.comparingByValue())
-						.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
-						LinkedHashMap::new));
+						sorted = map.entrySet().stream().sorted(java.util.Map.Entry.comparingByValue())
+								.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 						
 						sorted.forEach((k, v) -> {
 							System.out.println(k + " - " + v);
