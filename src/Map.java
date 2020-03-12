@@ -8,7 +8,9 @@ interface Map<K, V> {
     
     V put(K key, V value);
     
-    boolean containsKey(K key);
+	boolean containsKey(K key);
+	
+	int size();
     
     V get(K key);
     

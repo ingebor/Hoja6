@@ -95,8 +95,6 @@ public class Main {
 		for (String cardInList : list) {
 			keyAndValue[0] = cardInList.split("\\|")[0];
 			keyAndValue[1] = cardInList.split("\\|")[1];
-			System.out.println("en 0: " + keyAndValue[0]);
-			System.out.println("en 1: " + keyAndValue[1]);
 			map.put(keyAndValue[0], keyAndValue[1]);
 		}
 		/**
@@ -210,6 +208,7 @@ public class Main {
                     break;
                 }
             } catch (Exception e) {
+				System.out.println(e);
                 System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
             }
         }
