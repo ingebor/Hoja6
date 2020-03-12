@@ -178,12 +178,12 @@ public class Main {
 						.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
 						LinkedHashMap::new));
 						sorted.forEach((k, v) -> {
-							if (v == "Monstruo") {
+							if (v.equals("Monstruo")) {
 								countMon++;
-							} else if (v == "Trampa") {
+							} else if (v.equals("Trampa")) {
 								countTram++;
 
-							} else if (v == "Hechizo") {
+							} else if (v.equals("Hechizo")) {
 								countHech++;
 							}
 							System.out.println(k + " - " + v);
