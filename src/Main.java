@@ -49,10 +49,12 @@ public class Main {
 		FileReader fr;
 		fr = new FileReader(file);
 		final BufferedReader br = new BufferedReader(fr);
-		String[] lineList = null;
+		String[] lineList = new String[8862];
 		String line = "";
+		int cont = 0;
 		while ((line = br.readLine()) != null) {
-			lineList = line.split(" ");
+			lineList[cont] = line;
+			cont++;
 		}
 
 		br.close();
@@ -91,12 +93,8 @@ public class Main {
 		 */
 		String[] keyAndValue = new String[2];
 		for (String cardInList : list) {
-			keyAndValue[0] = cardInList.split("|")[0];
-			keyAndValue[1] = cardInList.split("|")[1];
-			//keyAndValue = cardInList.split("|");
-			System.out.println("tamanio del array: "+keyAndValue.length);
+			keyAndValue = cardInList.split("\\|");
 			map.put(keyAndValue[0], keyAndValue[1]);
-			System.out.println("funciona?");
 		}
 		/**
 		 * Teniendo todas las cartas guardadas en el Map, se muestra al usuario
