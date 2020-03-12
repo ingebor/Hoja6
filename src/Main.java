@@ -9,7 +9,7 @@
  * Lector de archivos reutilizado de Hoja de Trabajo 4
  * 
  * @author Julio Herrera 19402
- * @author Ingebor Rubio 19
+ * @author Ingebor Rubio 19003
  * @version 1.0
  */
 import java.io.BufferedReader;
