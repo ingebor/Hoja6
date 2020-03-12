@@ -91,8 +91,10 @@ public class Main {
 		 */
 		String[] keyAndValue = new String[2];
 		for (String cardInList : list) {
-			keyAndValue = cardInList.split("|");
-			System.out.println("tamanio del array"+keyAndValue.length);
+			keyAndValue[0] = cardInList.split("|")[0];
+			keyAndValue[1] = cardInList.split("|")[1];
+			//keyAndValue = cardInList.split("|");
+			System.out.println("tamanio del array: "+keyAndValue.length);
 			map.put(keyAndValue[0], keyAndValue[1]);
 			System.out.println("funciona?");
 		}
