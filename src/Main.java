@@ -93,7 +93,7 @@ public class Main {
 		 */
 		String[] keyAndValue = new String[2];
 		for (String cardInList : list) {
-			keyAndValue = cardInList.split("\\|");
+			keyAndValue = cardInList.split("\\|"); 
 			map.put(keyAndValue[0], keyAndValue[1]);
 		}
 		/**
