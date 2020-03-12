@@ -1,5 +1,9 @@
+import java.util.HashMap;
 import java.util.Map;
-public class MapFactory<K, V> {
+import java.util.TreeMap;
+import java.util.LinkedHashMap;
+
+class MapFactory<K, V> {
     public Map<K, V> getMap(int mapType) {
         switch (mapType) {
             case 1:

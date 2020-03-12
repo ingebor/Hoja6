@@ -19,6 +19,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.Map;
+import java.util.TreeMap;
 public class Main {
 
 	/**
@@ -110,27 +111,30 @@ public class Main {
             System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta en su coleccion, ordenadas por tipo.");
             System.out.println("5. Mostrar el nombre y tipo de todas las cartas existentes.");
             System.out.println("6. Mostrar el nombre y tipo de todas las cartas existentes, ordenadas por tipo.");
-            userOption = scan.nextInt();
-            scan.nextLine();
-            /**
-             * Se realizan las opciones segun la eleccion del usuario.
-             */
+			System.out.println("7. Salir");
+			
+			userOption = scan.nextInt();
+			scan.nextLine();
+			/**
+			 * Se realizan las opciones segun la eleccion del usuario.
+			 */
 			String key = "";
 			String value = "";
 			
-            try {
-            	//TreeMap<String, String> sorted = new TreeMap<>();
-                switch (userOption) {
+			try {
+				//TreeMap<String, String> sorted = new TreeMap<>();
+				switch (userOption) {
 					case 1:
 						System.out.println("Ingrese el nombre de la carta:");
 						key = scan.nextLine();
 						if (map.containsKey(key)) {
 							value = map.get(key);
-							System.out.println("Se ha ingresado la carta " + userMap.put(key, value));
+							userMap.put(key, value);
+							System.out.println("Se ha ingresado la carta: " + key);
 						} else {
 							System.out.println("Esta carta no existe!");
 						}
-                    break;
+					break;
 					case 2:
 						System.out.println("Ingrese el nombre de la carta:");
 						key = scan.nextLine();
@@ -140,9 +144,39 @@ public class Main {
 						} else {
 							System.out.println("Esta carta no existe!");
 						}
-                    break;
+					break;
 					case 3:
 						userMap.forEach((k, v) -> {
+							if (v.equals("Monstruo")) {
+								countMon++;
+							} else if (v.equals("Trampa")) {
+								countTram++;
+
+							} else if (v.equals("Hechizo")) {
+								countHech++;
+							}
+							System.out.println(k + " - " + v);
+						});
+						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
+						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
+						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
+					break;
+					case 4:
+						countMon = 0;
+						countTram = 0;
+						countHech = 0;
+						
+						//Map<String, String> unsorted = map;
+						Map<String,String> sorted = new TreeMap<String, String>();
+						System.out.println(sorted);
+						//sorted.putAll(userMap);
+						
+						/*if (mapType == 3) {
+							userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
+							.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+							(oldValue, newValue) -> oldValue, LinkedHashMap::new));
+						}*/
+						sorted.forEach((k, v) -> {
 							if (v == "Monstruo") {
 								countMon++;
 							} else if (v == "Trampa") {
@@ -156,62 +190,32 @@ public class Main {
 						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
 						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
 						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
-                    break;
-                    case 4:
-                    	countMon = 0;
-                    	countTram = 0;
-                    	countHech = 0;
-                    	
-                    	//Map<String, String> unsorted = map;
-                    	Map<String,String> sorted = new TreeMap<String, String>();
-                    	System.out.println(sorted);
-                    	//sorted.putAll(userMap);
-                    	
-                    	/*if (mapType == 3) {
-                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-                    	}*/
-                    	sorted.forEach((k, v) -> {
-							if (v == "Monstruo") {
-								countMon++;
-							} else if (v == "Trampa") {
-								countTram++;
-
-							} else if (v == "Hechizo") {
-								countHech++;
-							}
+					break;
+					case 5:
+						map.forEach((k, v) -> {
 							System.out.println(k + " - " + v);
 						});
-						System.out.println("Cantidad de cartas tipo Monstruo: " + countMon);
-						System.out.println("Cantidad de cartas tipo Trampa: " + countTram);
-						System.out.println("Cantidad de cartas tipo Hechizo: " + countHech);
-                    break;
-                    case 5:
-                    	map.forEach((k, v) -> {
-							System.out.println(k + " - " + v);
-						});
-                    break;
-                    case 6:
-                    	//sorted.putAll(userMap);
-                    	/*if (mapType == 3) {
-                    		userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                    		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                    		(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-                    	}*/   
-                    	//sorted.forEach((k, v) -> {
+					break;
+					case 6:
+						//sorted.putAll(userMap);
+						/*if (mapType == 3) {
+							userMap.entrySet().stream().sorted(Map.Entry.comparingByValue())
+							.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+							(oldValue, newValue) -> oldValue, LinkedHashMap::new));
+						}*/   
+						//sorted.forEach((k, v) -> {
 						/*	System.out.println(k + " - " + v);
 						});*/
-                    break;
-                    default:
-                        System.out.println("Eliga una opcion valida!");
-                    break;
-                }
-            } catch (Exception e) {
+					break;
+					default:
+						System.out.println("Eliga una opcion valida!");
+					break;
+				}
+			} catch (Exception e) {
 				System.out.println(e);
-                System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
-            }
-        }
+				System.out.println("Algo salio mal :("); // TODO: Cachar un error general o especifico 
+			}
+		}
 		scan.close();
 	}
 }

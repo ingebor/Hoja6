@@ -1,8 +1,7 @@
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
-class LinkedHashMap<K, V> implements Map{
+class LinkedHashMap<K, V> implements Map<K,V>{
 
 	@Override
 	public void clear() {
@@ -11,13 +10,13 @@ class LinkedHashMap<K, V> implements Map{
 	}
 
 	@Override
-	public boolean containsKey(Object key) {
+	public boolean containsKey(final Object key) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean containsValue(Object value) {
+	public boolean containsValue(final Object value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -29,7 +28,7 @@ class LinkedHashMap<K, V> implements Map{
 	}
 
 	@Override
-	public Object get(Object key) {
+	public Object get(final Object key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -47,19 +46,19 @@ class LinkedHashMap<K, V> implements Map{
 	}
 
 	@Override
-	public Object put(Object key, Object value) {
+	public Object put(final Object key, final Object value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void putAll(Map m) {
+	public void putAll(final Map m) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public Object remove(Object key) {
+	public Object remove(final Object key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
